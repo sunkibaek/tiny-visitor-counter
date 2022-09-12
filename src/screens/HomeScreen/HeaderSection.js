@@ -1,4 +1,6 @@
-import { Button, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+
+import Button from "../../components/Button";
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +12,7 @@ const styles = StyleSheet.create({
 
 const HeaderSection = () => (
   <View style={styles.container}>
-    <Button title="Reset" />
+    <Button.Link title="Reset" shrinked={true} />
   </View>
 );
 

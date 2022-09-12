@@ -1,16 +1,19 @@
-import { Button, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+
+import Button from "../../components/Button";
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    paddingHorizontal: 16,
   },
 });
 
 const ControlSection = () => (
   <View style={styles.container}>
-    <Button title="Exit" />
-    <Button title="Enter" />
+    <Button.Link title="Exit" fullWidth={true} />
+
+    <Button title="Enter" fullWidth={true} />
   </View>
 );
 

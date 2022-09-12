@@ -2,8 +2,6 @@ import { StatusBar } from "expo-status-bar";
 
 import Home from "./src/screens/HomeScreen";
 
-import Storybook from "./storybook";
-
 function App() {
   return (
     <>
@@ -14,5 +12,7 @@ function App() {
   );
 }
 
-// export default App;
-export default Storybook;
+export default App;
+
+// import Storybook from "./storybook";
+// export default Storybook;
