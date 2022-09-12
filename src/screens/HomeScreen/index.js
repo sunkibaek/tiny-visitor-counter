@@ -1,15 +1,23 @@
-import { View } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 
 import HeaderSection from "./HeaderSection";
 import CounterSection from "./CounterSection";
 import ControlSection from "./ControlSection";
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
 const HomeScreen = () => (
-  <View>
+  <SafeAreaView style={styles.container}>
     <HeaderSection />
+
     <CounterSection />
+
     <ControlSection />
-  </View>
+  </SafeAreaView>
 );
 
 export default HomeScreen;
