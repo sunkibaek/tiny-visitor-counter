@@ -2,7 +2,9 @@ import { StatusBar } from "expo-status-bar";
 
 import Home from "./src/screens/HomeScreen";
 
-export default function App() {
+import Storybook from "./storybook";
+
+function App() {
   return (
     <>
       <StatusBar style="auto" />
@@ -11,3 +13,6 @@ export default function App() {
     </>
   );
 }
+
+// export default App;
+export default Storybook;
