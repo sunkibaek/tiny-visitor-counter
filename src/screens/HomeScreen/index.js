@@ -4,6 +4,7 @@ import { Alert, SafeAreaView, StyleSheet, View } from "react-native";
 import HeaderSection from "./HeaderSection";
 import CounterSection from "./CounterSection";
 import ControlSection from "./ControlSection";
+import { getCurrentStatus } from "../../models/Counter";
 
 const DEFAULT_MAX = 30;
 
@@ -20,11 +21,6 @@ const styles = StyleSheet.create({
 const HomeScreen = () => {
   const [max, setMax] = useState(DEFAULT_MAX);
   const [current, setCurrent] = useState(0);
-
-  const currentStatus = {
-    equalToMax: current === max,
-    overMax: current > max,
-  };
 
   const increaseCurrent = () => {
     setCurrent((prev) => prev + 1);
@@ -73,7 +69,7 @@ const HomeScreen = () => {
         <CounterSection
           current={current}
           max={max}
-          currentStatus={currentStatus}
+          currentStatus={getCurrentStatus(current, max)}
         />
 
         <ControlSection

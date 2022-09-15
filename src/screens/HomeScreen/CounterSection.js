@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { CURRENT_STATTUS } from "../../models/Counter";
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -33,26 +35,27 @@ const styles = StyleSheet.create({
     height: 360,
     borderRadius: 180,
   },
-  warningText: {
+  [CURRENT_STATTUS.equalToMax]: {
     color: "#FFC107",
   },
-  errorText: {
+  [CURRENT_STATTUS.overMax]: {
     color: "#F44336",
   },
+  [CURRENT_STATTUS.normal]: {
+    // no styles
+  },
 });
+
+const getCurrentVisitorTextStyle = (currentStatus) => {
+  return [styles.currentVisitorText, styles[currentStatus]];
+};
 
 const CounterSection = ({ current, max, currentStatus }) => {
   return (
     <View style={styles.container}>
       <View style={styles.circle}>
         <View style={styles.row}>
-          <Text
-            style={[
-              styles.currentVisitorText,
-              currentStatus.equalToMax && styles.warningText,
-              currentStatus.overMax && styles.errorText,
-            ]}
-          >
+          <Text style={getCurrentVisitorTextStyle(currentStatus)}>
             {current}
           </Text>
 
