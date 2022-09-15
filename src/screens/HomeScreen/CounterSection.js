@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   currentVisitorText: {
     fontSize: 128,
     fontWeight: "bold",
+    fontVariant: ["tabular-nums"],
   },
   divider: {
     fontSize: 64,
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
     fontSize: 64,
     lineHeight: 128,
     marginBottom: -8,
+    fontVariant: ["tabular-nums"],
   },
   row: {
     flexDirection: "row",
