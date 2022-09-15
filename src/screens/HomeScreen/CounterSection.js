@@ -31,14 +31,28 @@ const styles = StyleSheet.create({
     height: 360,
     borderRadius: 180,
   },
+  warningText: {
+    color: "#FFC107",
+  },
+  errorText: {
+    color: "#F44336",
+  },
 });
 
-const CounterSection = ({ current, max }) => {
+const CounterSection = ({ current, max, currentStatus }) => {
   return (
     <View style={styles.container}>
       <View style={styles.circle}>
         <View style={styles.row}>
-          <Text style={styles.currentVisitorText}>{current}</Text>
+          <Text
+            style={[
+              styles.currentVisitorText,
+              currentStatus.equalToMax && styles.warningText,
+              currentStatus.overMax && styles.errorText,
+            ]}
+          >
+            {current}
+          </Text>
 
           <Text style={styles.divider}> / </Text>
           <Text style={styles.maxVisitorText}>{max}</Text>

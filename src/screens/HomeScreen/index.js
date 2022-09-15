@@ -21,6 +21,11 @@ const HomeScreen = () => {
   const [max, setMax] = useState(DEFAULT_MAX);
   const [current, setCurrent] = useState(0);
 
+  const currentStatus = {
+    equalToMax: current === max,
+    overMax: current > max,
+  };
+
   const increaseCurrent = () => {
     setCurrent((prev) => prev + 1);
   };
@@ -65,7 +70,11 @@ const HomeScreen = () => {
       <View style={styles.container}>
         <HeaderSection onResetPress={resetAll} />
 
-        <CounterSection current={current} max={max} />
+        <CounterSection
+          current={current}
+          max={max}
+          currentStatus={currentStatus}
+        />
 
         <ControlSection
           onEnterPress={increaseCurrent}
