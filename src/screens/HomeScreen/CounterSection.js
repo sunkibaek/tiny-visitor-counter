@@ -33,15 +33,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const CounterSection = () => {
+const CounterSection = ({ current, max }) => {
   return (
     <View style={styles.container}>
       <View style={styles.circle}>
         <View style={styles.row}>
-          <Text style={styles.currentVisitorText}>99</Text>
+          <Text style={styles.currentVisitorText}>{current}</Text>
 
           <Text style={styles.divider}> / </Text>
-          <Text style={styles.maxVisitorText}>99</Text>
+          <Text style={styles.maxVisitorText}>{max}</Text>
         </View>
       </View>
     </View>

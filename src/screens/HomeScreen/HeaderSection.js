@@ -10,9 +10,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const HeaderSection = () => (
+const HeaderSection = ({ onResetPress }) => (
   <View style={styles.container}>
-    <Button.Link title="Reset" shrinked={true} />
+    <Button.Link title="Reset" onPress={onResetPress} />
   </View>
 );
 

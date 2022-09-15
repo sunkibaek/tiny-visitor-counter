@@ -9,11 +9,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const ControlSection = () => (
+const ControlSection = ({ onExitPress, onEnterPress }) => (
   <View style={styles.container}>
-    <Button.Link title="Exit" fullWidth={true} />
+    <Button.Link title="Exit" fullWidth={true} onPress={onExitPress} />
 
-    <Button title="Enter" fullWidth={true} />
+    <Button title="Enter" fullWidth={true} onPress={onEnterPress} />
   </View>
 );
 
