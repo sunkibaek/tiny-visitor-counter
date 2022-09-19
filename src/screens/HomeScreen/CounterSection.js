@@ -14,18 +14,14 @@ const styles = StyleSheet.create({
     fontVariant: ["tabular-nums"],
   },
   divider: {
-    fontSize: 64,
-    lineHeight: 128,
+    height: 1,
+    width: 160,
+    backgroundColor: "#000000",
   },
   maxVisitorText: {
     fontSize: 64,
-    lineHeight: 128,
-    marginBottom: -8,
     fontVariant: ["tabular-nums"],
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "flex-end",
+    marginTop: 16,
   },
   circle: {
     alignItems: "center",
@@ -54,14 +50,18 @@ const CounterSection = ({ current, max, currentStatus }) => {
   return (
     <View style={styles.container}>
       <View style={styles.circle}>
-        <View style={styles.row}>
-          <Text style={getCurrentVisitorTextStyle(currentStatus)}>
-            {current}
-          </Text>
+        <Text
+          style={getCurrentVisitorTextStyle(currentStatus)}
+          includeFontPadding={false}
+        >
+          {current}
+        </Text>
 
-          <Text style={styles.divider}> / </Text>
-          <Text style={styles.maxVisitorText}>{max}</Text>
-        </View>
+        <Text style={styles.divider} />
+
+        <Text style={styles.maxVisitorText} includeFontPadding={false}>
+          {max}
+        </Text>
       </View>
     </View>
   );
