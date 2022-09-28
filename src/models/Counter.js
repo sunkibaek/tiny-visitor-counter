@@ -4,6 +4,11 @@ export const CURRENT_STATTUS = {
   normal: "NORMAL",
 };
 
+export const DEFAULTS = {
+  max: 30,
+  limit: 9_999,
+};
+
 export const getCurrentStatus = (current, max) => {
   if (current === max) {
     return CURRENT_STATTUS.equalToMax;

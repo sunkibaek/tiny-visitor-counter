@@ -51,6 +51,7 @@ const CounterSection = ({ current, max, currentStatus }) => {
     <View style={styles.container}>
       <View style={styles.circle}>
         <Text
+          testID="currentVisitorText"
           style={getCurrentVisitorTextStyle(currentStatus)}
           includeFontPadding={false}
         >
@@ -59,7 +60,11 @@ const CounterSection = ({ current, max, currentStatus }) => {
 
         <Text style={styles.divider} />
 
-        <Text style={styles.maxVisitorText} includeFontPadding={false}>
+        <Text
+          testID="maxVisitorText"
+          style={styles.maxVisitorText}
+          includeFontPadding={false}
+        >
           {max}
         </Text>
       </View>
