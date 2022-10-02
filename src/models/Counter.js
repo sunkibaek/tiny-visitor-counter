@@ -6,7 +6,7 @@ export const CURRENT_STATTUS = {
 
 export const DEFAULTS = {
   max: 30,
-  limit: 9_999,
+  limit: 9999,
 };
 
 export const getCurrentStatus = (current, max) => {
