@@ -1,5 +1,12 @@
-import { useState } from "react";
-import { Alert, SafeAreaView, StyleSheet, View } from "react-native";
+import { useEffect, useState } from "react";
+import {
+  ActivityIndicator,
+  Alert,
+  SafeAreaView,
+  StyleSheet,
+  View,
+} from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import HeaderSection from "./HeaderSection";
 import CounterSection from "./CounterSection";
@@ -14,11 +21,48 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  activityIndicator: {
+    flex: 1,
+  },
 });
 
 const HomeScreen = () => {
   const [max, setMax] = useState(DEFAULTS.max);
   const [current, setCurrent] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
+    AsyncStorage.setItem("max", max.toString());
+  }, [max, isLoading]);
+
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
+    AsyncStorage.setItem("current", current.toString());
+  }, [current, isLoading]);
+
+  useEffect(() => {
+    const load = async () => {
+      const maxString = await AsyncStorage.getItem("max");
+      const currentString = await AsyncStorage.getItem("current");
+
+      if (!maxString || !currentString) {
+        return;
+      }
+
+      setMax(parseInt(maxString));
+      setCurrent(parseInt(currentString));
+      setIsLoading(false);
+    };
+
+    load();
+  }, []);
 
   const increaseCurrent = () => {
     setCurrent((prev) => {
@@ -68,22 +112,26 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <View style={styles.safeArea}>
       <View style={styles.container}>
         <HeaderSection onResetPress={resetAll} />
 
-        <CounterSection
-          current={current}
-          max={max}
-          currentStatus={getCurrentStatus(current, max)}
-        />
+        {isLoading ? (
+          <ActivityIndicator size="large" style={styles.activityIndicator} />
+        ) : (
+          <CounterSection
+            current={current}
+            max={max}
+            currentStatus={getCurrentStatus(current, max)}
+          />
+        )}
 
         <ControlSection
           onEnterPress={increaseCurrent}
           onExitPress={decreaseCurrent}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
